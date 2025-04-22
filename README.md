@@ -15,3 +15,4 @@ Calculates the love affinity number based on numerology. Basically, each vowel i
 Inspired from a portion of this article:https://bootsnipp.com/snippets/O1z2Z
 
 Live at:
+img : https://github.com/Spsiamahmed/love-calculator/blob/main/love-calculator-image.jpg
