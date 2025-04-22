@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Love Calculator by SP Siam Ahmed – Check your love percentage with a fun and playful love test. See if you and your partner are a perfect match!">
+    <meta name="keywords" content="Love Calculator, Love Test, Siam Ahmed, Love Percentage, Relationship Test, Love Match">
+    <meta name="author" content="SP Siam Ahmed">
+    <meta property="og:title" content="Love Calculator by SP Siam Ahmed | Check Your Love Compatibility">
+    <meta property="og:description" content="Find out your love percentage with the Love Calculator. Enter your names and calculate your love compatibility. Fun and accurate results!">
+    <meta property="og:image" content="image-link.jpg"> <!-- Add a relevant image link -->
+    <meta property="og:url" content="https://github.com/Spsiamahmed"> <!-- Replace with your actual URL -->
+    <title>Love Calculator by SP Siam Ahmed | Calculate Your Love Compatibility</title>
+    <style type="text/css">
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f8ff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        text-align: center;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        position: relative;
+    }
+
+    h1 {
+        color: #ff69b4;
+    }
+
+    input {
+        padding: 10px;
+        margin: 10px;
+        width: 80%;
+        border: 2px solid #ff69b4;
+        border-radius: 5px;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #ff69b4;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #ff1493;
+    }
+
+    #result {
+        font-size: 1.2em;
+        margin-top: 20px;
+        font-weight: bold;
+    }
+
+    #congrats {
+        margin-top: 15px;
+        font-size: 1.1em;
+        color: green;
+        font-weight: bold;
+        display: none;
+        animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+        0% { opacity: 1; }
+        50% { opacity: 0.2; }
+        100% { opacity: 1; }
+    }
+
+    #credit {
+        margin-top: 10px;
+        font-size: 0.9em;
+        color: #999;
+        font-style: italic;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Love Calculator</h1>
+        <input type="text" id="name1" placeholder="Enter your name" aria-label="Your Name">
+        <input type="text" id="name2" placeholder="Enter your partner's name" aria-label="Partner's Name">
+        <button onclick="calculateLove()">Calculate Love</button>
+        <p id="result"></p>
+        <p id="congrats">Congratulations 🌷🤍</p>
+        <p id="credit">©Sp Siam Ahmed</p>
+    </div>
+
+    <script>
+    function calculateLove() {
+        var name1 = document.getElementById('name1').value.trim().toLowerCase();
+        var name2 = document.getElementById('name2').value.trim().toLowerCase();
+
+        document.getElementById('congrats').style.display = "none"; // Hide first
+
+        if (name1 === "" || name2 === "") {
+            alert("Please enter both names!");
+            return;
+        }
+
+        if ((name1 === "siam" && name2 === "bithi") || (name1 === "bithi" && name2 === "siam")) {
+            document.getElementById('result').innerText = "Your love percentage is 100%! You two are a perfect match! " + name1 + " & " + name2;
+            document.getElementById('congrats').style.display = "block";
+            return;
+        }
+
+        // Generate hash-like score based on names
+        let hash = 0;
+        let combined = name1 + name2;
+        for (let i = 0; i < combined.length; i++) {
+            hash += combined.charCodeAt(i) * (i + 1);
+        }
+
+        let lovePercentage = hash % 101;
+
+        let resultMessage = "Your love percentage is " + lovePercentage + "%!";
+        if (lovePercentage > 80) {
+            resultMessage += " You two are a perfect match!";
+        } else if (lovePercentage > 50) {
+            resultMessage += " It's looking good!";
+        } else {
+            resultMessage += " Maybe you need more time!";
+        }
+
+        document.getElementById('result').innerText = resultMessage + " " + name1 + " & " + name2;
+
+        // Show congratulations only if 100%
+        if (lovePercentage === 100) {
+            document.getElementById('congrats').style.display = "block";
+        }
+    }
+    </script>
+</body>
+</html>
